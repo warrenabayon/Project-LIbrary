@@ -46,7 +46,6 @@ body{
   display: flex;
   max-width: 1440px;
   margin: 0 auto;
-  height: 100vh;
 }
 
 
@@ -54,18 +53,13 @@ body{
 
 #sidemenumain{
   background-color: var(--clr-primary-earthBrown);
-  /* height: 100vh; */
+  height: 100vh;
   z-index: 1;
   width: 280px;
-  height: 100%;
-  
+  padding: 30px;
   display: flex;
   flex-direction: column;
   box-shadow: 0px 5px 5px 4px rgba(0, 0, 0, 0.06);
-}
-
-.sidemenuwrap {
-  padding: var(--pad-30);
 }
 
 .divider {
@@ -147,8 +141,6 @@ body{
 
 #libcontent {
   flex: 1;
-  display: flex;
-  flex-direction: column;
   background-color: var(--clr-primary-earthBrown-dk);
 }
 
@@ -275,89 +267,26 @@ li.profile {
 }
 
 
-/* MAIN CONTENT */
-section#maincontent {
-  display: flex;
-  height: 100%;
-  
-  
-}
-
-
-.maincontentwrap {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: var(--pad-25);
-  gap: 25px;
-}
-
 /* featured */
 
-#featuredbooks{
-  /* background-image: url('../images/pokemonbook.jpg'); */
-  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgb(0 0 0 / 80%)), url(../images/pokemonbook.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 330px;
-  
+#libcontent article {
+  padding: var(--pad-25);
   display: flex;
-  align-items: end;
-  border-radius: 20px;
+  flex-direction: column;
+}
+
+#featuredbooks {
 
 }
 
 .featwrap {
+  background-image: url('../images/pokemonbook.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 330px;
   padding: var(--pad-30);
-}
-
-/* recommended */
-#recommenedbooks {
-  padding: var(--pad-20);
-  background: var(--clr-primary-earthBrown);
-}
-
-.regularbtn {
-  font-size: 16px;
-  color: var(--clr-neutrals-white);
-  background: var(--clr-primary-appleRed);
-  border: none;
-  border-radius: 10px;
-  padding: 0 15px;
-  height: 40px;
   display: flex;
-  align-items: center;
-  gap: 10px;
-}
+    align-items: end;
 
-.regularbtn span {
-  margin-bottom: -1px;
-}
-
-.regularbtn .icon {
-  line-height: 0.9;
-}
-
-.heading {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-.heading h3 {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.secbox{
-  border-radius: 10px;
-}
-
-/* topbook */
-.topbook {
-  display: flex;
-  width: 280px;
-  background: var(--clr-primary-appleRed);
-  
 }
