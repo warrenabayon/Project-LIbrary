@@ -23,48 +23,91 @@
   --tsn-ease-slow: 1s;
 
   /* elevation */
+  --box-shade-lt: 0px 5px 5px 4px rgba(0, 0, 0, 0.04);
+  --box-shade: 0px 5px 5px 4px rgba(0, 0, 0, 0.06);
+  --brdr-white-clr: #ffffff4f;
 
   /* padding */
+  --pad-15: 15px;
   --pad-20: 20px;
   --pad-25: 25px;
   --pad-30: 30px;
 
+  /* margin */
+  --mar-5: 5px;
+  --mar-10: 10px;
+  --mar-15: 15px;
+  --mar-20: 20px;
+
+  
 }
 
-
-body{
-  margin: 0;
-  font-family: var(--ff-inter-ss);
-  font-size: 16px;
-}
-
-#mainwrap{
-  background-color: var(--clr-primary-earthBrown-dk);
+body {
+    background: var(--clr-primary-earthBrown-dk);
+    margin: 0;
+    font-family: var(--ff-inter-ss);
+    font-size: 16px;
 }
 
 .container {
-  display: flex;
-  max-width: 1440px;
-  margin: 0 auto;
-  height: 100vh;
-}
-
-
-/* SIDE MENU */
-
-#sidemenumain{
-  background-color: var(--clr-primary-earthBrown);
-  /* height: 100vh; */
-  z-index: 1;
-  width: 280px;
-  height: 100%;
+    
+ 
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
   
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 5px 5px 4px rgba(0, 0, 0, 0.06);
+    max-width: 1300px;
+    margin: 0 auto;
+
+}
+    
+.con-wrap {
+       
+    background: grey;
+   
+    flex: 1;
 }
 
-.sidemenuwrap {
+.dgrid {
+  display: grid;
+}
+
+.dflex{
+    display: flex;
+}
+
+
+
+.just-con-sp-bet{
+    justify-content: space-between;
+}
+
+.align-fl-end {
+    align-items: flex-end;
+}
+
+.align-fl-cen {
+    align-items: center;
+}
+
+
+.fdcol {
+    flex-direction: column;
+}
+
+
+
+/* SIDEBAR */
+#sidebar {
+    max-width: 280px;
+    background: var(--clr-primary-earthBrown);
+    box-shadow: var(--box-shade);
+    z-index: 1;
+    position: relative;
+
+ }
+
+ .sidemenuwrap {
   padding: var(--pad-30);
 }
 
@@ -127,8 +170,6 @@ body{
 }
 
 
-
-
 #liblogo {
   margin: 0;
   margin-bottom: 40px;
@@ -141,24 +182,27 @@ body{
 
 
 
-/* MAIN CONTENT */
 
-/* header */
 
-#libcontent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--clr-primary-earthBrown-dk);
+
+/* MAINCONTENT */
+
+#maincontent{
+    
+    display: flex;
+    width: 100%;
 }
 
-header {
-  background-color: var(--clr-primary-earthBrown);
-  padding: var(--pad-20) var(--pad-25);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.06);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+#book-content {
+    width: 100%;
+}
+
+
+/* HEADER */
+#header {
+   padding: var(--pad-20);
+    background: var(--clr-primary-earthBrown);
+    box-shadow: var(--box-shade);
 }
 
 #searchform {
@@ -275,43 +319,44 @@ li.profile {
 }
 
 
-/* MAIN CONTENT */
-section#maincontent {
-  display: flex;
-  height: 100%;
-  
-  
+/* BOOK CONTENT */
+#book-wrap {
+   
+    min-height: 100px;
 }
 
-
-.maincontentwrap {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: var(--pad-25);
-  gap: 25px;
-}
-
-/* featured */
-
-#featuredbooks{
-  /* background-image: url('../images/pokemonbook.jpg'); */
-  background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgb(0 0 0 / 80%)), url(../images/pokemonbook.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 330px;
-  
-  display: flex;
-  align-items: end;
-  border-radius: 20px;
-
+#book-feat {
+    min-height: 330px;
+    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgb(0 0 0 / 90%)), url(../images/pokemonbook.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    
 }
 
 .featwrap {
   padding: var(--pad-30);
 }
 
+.featinfo h4 {
+  margin: 0;
+  margin-bottom: var(--mar-5);
+  color: var(--clr-neutrals-white);
+  font-weight: 400;
+  font-weight: 16px;
+}
+
+.featinfo h3 {
+  font-size: 24px;
+  margin-top: 0;
+  font-weight: 600;
+}
+
+.featinfo h3  a {
+  color: var(--clr-neutrals-white);
+  text-decoration: none;
+}
 /* recommended */
 #recommenedbooks {
   padding: var(--pad-20);
@@ -322,15 +367,23 @@ section#maincontent {
   font-size: 16px;
   color: var(--clr-neutrals-white);
   background: var(--clr-primary-appleRed);
-  border: none;
+  border: 1px solid var(--clr-primary-appleRed);
   border-radius: 10px;
   padding: 0 15px;
   height: 40px;
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: all ease 0.5s;
 }
 
+.regularbtn:hover {
+  background: var(--clr-neutrals-white);
+}
+.regularbtn:hover span, .regularbtn:hover span svg path {
+ color: var(--clr-primary-appleRed);
+ stroke: var(--clr-primary-appleRed);
+}
 .regularbtn span {
   margin-bottom: -1px;
 }
@@ -339,25 +392,190 @@ section#maincontent {
   line-height: 0.9;
 }
 
-.heading {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+
+
+/* BOOK LISTING CARDS */
+
+#book-cards {
+    padding: var(--pad-20);
+    background: var(--clr-primary-earthBrown);
+    border-radius: 20px;
 }
-.heading h3 {
+
+
+
+.sec-heading {
+ margin-bottom: 20px;
+}
+
+.sec-heading h3 {
   margin: 0;
   font-size: 22px;
   font-weight: 600;
 }
 
-.secbox{
-  border-radius: 10px;
+#book-listing {
+    background: var(--clr-primary-earthBrown-dk);
+    padding: var(--pad-25);
+    gap: 20px;
+    flex: 1;
+   
+
 }
 
-/* topbook */
-.topbook {
-  display: flex;
-  width: 280px;
-  background: var(--clr-primary-appleRed);
+.bookdetails {
+    padding: var(--pad-15);
+}
+
+#book-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+#bookitem {
+  box-shadow: var(--box-shade-lt);
+  border-radius: 10px;
+   
+}
+
+.bookcover {
+    height: 200px;
+    display: block;
+    background: var(--clr-primary-earthBrown-dkn);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.bookdetails h3, .bookdetails h4 {
+  margin: 0;
+}
+
+.bookdetails h3, .bookdetails h4 {
+    white-space: nowrap;
+    width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: var(--mar-5);
+}
+
+.bookdetails .title a {
+    color: var(--clr-base);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+
+.bookdetails h4 {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--clr-bales-lt);
+    margin-bottom: var(--mar-15);
+}
+
+
+.regularbtn.small {
+    font-size: 14px;
+    height: 32px;
+    padding: 0 8px;
+    gap: 5px;
+}
+
+.regularbtn.small span {
+  margin-top: -1px;
+}
+
+.regularbtn.small svg {
+    width: 13px;
+    height: 12px;
+}
+
+.bookdetails p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--clr-bales-lt);
+    opacity: 0.8;
+}
+
+
+.regularbtn.small span.btnicon {
+    display: none;
+}
+
+
+
+/* TOP BOOK */
+
+#top-book {
+    max-width: 280px;
+    background: var(--clr-primary-appleRed);
+    color: var(--clr-neutrals-white);
+}
+
+#top-book h3, #top-book p  {
+margin: 0;
+
+}
+
+#top-book h3 {
+   font-size: 18px;
+   font-weight: 600;
+}
+
+.top-wrap p {
+  font-size: 15px;
+}
+
+.top-wrap {
+  padding: var(--pad-20);
+  gap: 5px;
   
+}
+
+
+img#topimg {
+  max-width: 200px;
+  border-radius: 20px;
+  margin-bottom: var(--mar-15);
+  margin-top: var(--mar-20);
+  
+}
+
+.stars {
+  gap: 10px;
+  margin-top: var(--mar-15);
+  margin-bottom: var(--mar-20);
+ 
+}
+
+.summary .col {
+  padding:0 var(--pad-15);
+}
+
+.summary p {
+  text-align: center;
+  font-size: 13px;
+}
+
+.summary {
+  margin-bottom: var(--mar-20);
+}
+
+.summary .col + .col {
+  border-left: 1px solid var(--brdr-white-clr);
+}
+
+.summary span {
+  font-size: 18px;
+  display: block;
+  font-weight: 500;
+}
+
+
+.top-wrap p.info {
+  text-align: center;
+  font-weight: 400;
+  line-height: 1.5em;
+  margin-top: var(--mar-10);
 }
