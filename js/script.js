@@ -7,6 +7,7 @@ const featInfoBtnStatus = document.querySelector('.featinfo button');
 const buttonAddBook = document.querySelector('button#addbook');
 const addFormSec = document.querySelector('#add-form');
 const buttonFormClose = document.querySelector('.close-form');
+const buttonConfirmBook = document.querySelector('#confirm-book');
 
 
 function Book(title, author, pagesNo, isRead) {
@@ -116,6 +117,11 @@ window.onclick = function(event) {
     addFormSec.style.display = "none";
   }
 }
+
+buttonConfirmBook.addEventListener('click', (e) => {
+  e.preventDefault()//prevent the submit of fake form;
+  console.log('book added');
+})
 
 // console.table(myLibrary);
 
