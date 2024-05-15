@@ -4,100 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
+  <style>
+    /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input[type="checkbox"]:checked + .slider {
+  background-color: #2196F3;
+}
+
+input[type="checkbox"]:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input[type="checkbox"]:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+  </style>
 </head>
 <body>
+  <label class="switch">
+    <input type="checkbox">
+    <span class="slider round"></span>
+  </label>
   
-  <section id="book-list">
-
-  </section>
-  <button id="new-book">New Book</button>
-
-  <script>
-    const myLibrary = [];
-    const bookList = document.querySelector('#book-list');
-
-
-    function Book(title, author, pagesNo, isRead) {
-      this.title = title;
-      this.author = author;
-      this.pagesNo = pagesNo;
-      this.isRead = isRead;
-    }
-
-    Book.prototype.info = function() {
-      return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-    }
-
-    //add dummy content
-    const newBoook1 = new Book('1 Warren Book Part III', 'Warren P. Abayon', 1250, 'Yes');
-    const newBoook2 = new Book('2 Warren Book Part III', 'Warren P. Abayon', 12500, 'Yes');
-    const newBoook3 = new Book('3 Warren Book Part III', 'Warren P. Abayon', 150, 'Yes');
-
-
-    //object constructor new object ot array
-    myLibrary.push(newBoook1);
-    myLibrary.push(newBoook2);
-    myLibrary.push(newBoook3);
-
-
-    //loops array
-    myLibrary.forEach((val,index, arr) => {
-      //create the elements
-      const bookItems = document.createElement('article');
-      const bookCover = document.createElement('div');
-      const bookDetails = document.createElement('div');
-      const bookTitle = document.createElement('h3');
-      const bookAuthor = document.createElement('h4');
-      const bookRow = document.createElement('div');
-      const bookRowColLeft = document.createElement('div');
-      const bookRowColRight = document.createElement('div');
-      const bookBtnStatus = document.createElement('button');
-      const bookPagesNo = document.createElement('p');
-
-      //set the element value
-      bookTitle.innerHTML = `<a href="">${val.title}</a>`;
-      bookAuthor.innerHTML = val.author;
-      bookBtnStatus.innerHTML = `<span>${val.isRead}</span> <span class="btnicon"><svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M1.5 7H7.5M7.5 7H13.5M7.5 7V13M7.5 7V1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                          </svg>
-                                          
-                                          </span>`;
-      bookPagesNo.innerHTML = `${val.pagesNo} Pages`;
-
-      //add classes
-      bookItems.setAttribute('id','bookitem');
-      bookCover.classList.add('bookcover')
-      bookDetails.classList.add('bookdetails');
-      bookTitle.classList.add('title');
-      bookRow.classList.add("row", "dflex", 'align-fl-cen', 'just-con-sp-bet');
-      bookRowColLeft.classList.add('col');
-      bookRowColRight.classList.add('col');
-      bookBtnStatus.setAttribute('id', 'addbook');
-      bookBtnStatus.classList.add('regularbtn', 'small');
-
-      //add the elemenent //show
-      bookList.appendChild(bookItems);
-      bookItems.appendChild(bookCover)
-      bookItems.appendChild(bookDetails);
-      bookDetails.appendChild(bookTitle);
-      bookDetails.appendChild(bookAuthor);
-      bookDetails.appendChild(bookRow);
-      bookRow.appendChild(bookRowColLeft);
-      bookRowColLeft.appendChild(bookBtnStatus);
-      bookRow.appendChild(bookRowColRight);
-      bookRowColRight.appendChild(bookPagesNo)
-
-
-    }) 
-    
-    
-    myLibrary.forEach((val,index,arr) => {
-      if (index === 0) console.log(val.title);
-    })
-    // console.table(myLibrary);
-
-
-
-  </script>
 </body>
 </html>
