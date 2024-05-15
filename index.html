@@ -106,7 +106,7 @@
                                 <div class="featinfo">
                                   <h4>Author name</h4>
                                   <h3><a href="">Lorem Ipsum dolor sit amit title II</a></h3>
-                                    <button id="addbook" class="regularbtn"><span>Continue</span>
+                                    <button id="isread" class="regularbtn"><span>Continue</span>
                                       <span class="btnicon">
                                         <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M7.5 1L11.5 5L7.5 9M1.5 1L5.5 5L1.5 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -122,6 +122,7 @@
                                 <h3>Recommended</h3>
                               </div>
                               <div class="col">
+
                                 <button id="addbook" class="regularbtn"><span>Add Book</span>
                                   <span class="btnicon"><svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1.5 7H7.5M7.5 7H13.5M7.5 7V13M7.5 7V1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -159,32 +160,35 @@
 
                 </section>
                 <section id="add-form">
-                  <form id="frm-add" method="post">
-                    <h3>Add New Book</h3>
-                    <div class="row dflex fdcol">
-                      <label for="book-title">Book Title</label>
-                      <input type="text" id="book-title" name="book-title" placeholder="Enter Book Title">
-                    </div>
-                    <div class="row dflex fdcol">
-                      <label for="book-author">Book Author</label>
-                      <input type="text" id="book-author" name="book-author" placeholder="Enter Author">
-                    </div>
-                    <div class="row dflex fdcol">
-                      <label for="book-pages-no">No. of Pages</label>
-                      <input type="number" name="book-pages-no" id="book-pages-no" placeholder="Enter Pages">
-                    </div>
-                    <div class="row dflex align-fl-cen">
-                      <label class="switch">
-                        <input type="checkbox" id="is-read" name="is-read">
-                        <span class="slider round"></span>
-                      </label>
-                      <label for="is-read">Did you read this?</label>
-                    </div>
-                    <div class="row dflex fdcol form-submit">
-                      <button type="submit" id="confirm-book">Confirm</button>
-                      <button type="reset" id="reset-form">Reset</button>
-                    </div>
-                  </form>
+                  <div class="addformwrap">
+                    <form id="frm-add" method="post">
+                      <span class="close-form">&times;</span>
+                      <h3>Add New Book</h3>
+                      <div class="row dflex fdcol">
+                        <label for="book-title">Book Title</label>
+                        <input type="text" id="book-title" name="book-title" placeholder="Enter Book Title">
+                      </div>
+                      <div class="row dflex fdcol">
+                        <label for="book-author">Book Author</label>
+                        <input type="text" id="book-author" name="book-author" placeholder="Enter Author">
+                      </div>
+                      <div class="row dflex fdcol">
+                        <label for="book-pages-no">No. of Pages</label>
+                        <input type="number" name="book-pages-no" id="book-pages-no" placeholder="Enter Pages">
+                      </div>
+                      <div class="row dflex align-fl-cen">
+                        <label class="switch">
+                          <input type="checkbox" id="is-read" name="is-read">
+                          <span class="slider round"></span>
+                        </label>
+                        <label for="is-read">Did you read this?</label>
+                      </div>
+                      <div class="row dflex fdcol form-submit">
+                        <button type="submit" id="confirm-book">Confirm</button>
+                        <button type="reset" id="reset-form">Reset</button>
+                      </div>
+                    </form>
+                  </div>
                 </section>
             </section>
 

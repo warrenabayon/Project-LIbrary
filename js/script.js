@@ -4,6 +4,9 @@ const bookFeat = document.querySelector('#book-feat');
 const featInfoAuthor = document.querySelector('.featinfo h4');
 const featInfoTitle = document.querySelector('.featinfo h3');
 const featInfoBtnStatus = document.querySelector('.featinfo button');
+const buttonAddBook = document.querySelector('button#addbook');
+const addFormSec = document.querySelector('#add-form');
+const buttonFormClose = document.querySelector('.close-form');
 
 
 function Book(title, author, pagesNo, isRead) {
@@ -66,7 +69,7 @@ function showBooks(bookArr) {
     bookRow.classList.add("row", "dflex", 'align-fl-cen', 'just-con-sp-bet');
     bookRowColLeft.classList.add('col');
     bookRowColRight.classList.add('col');
-    bookBtnStatus.setAttribute('id', 'addbook');
+    bookBtnStatus.setAttribute('id', 'isread');
     bookBtnStatus.classList.add('regularbtn', 'small');
   
     //add the elemenent //show
@@ -98,8 +101,21 @@ function showBooks(bookArr) {
 }
 
 
-//form
+//form pop up acctions
+buttonAddBook.addEventListener('click', () => {
+  addFormSec.style.display = "block";
+});
 
+buttonFormClose.addEventListener('click', () => {
+  addFormSec.style.display = "none";
+});
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == addFormSec) {
+    addFormSec.style.display = "none";
+  }
+}
 
 // console.table(myLibrary);
 

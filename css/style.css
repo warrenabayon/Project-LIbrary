@@ -244,7 +244,7 @@ input[type="search"]::placeholder {
   color: var(--clr-bales-lt);
 }
 
-button[type="submit"] {
+#searchform button[type="submit"] {
   text-indent: -999px;
   z-index: 1;
   
@@ -588,10 +588,11 @@ img#topimg {
 
 /* Add book form */
 
-#add-form {
+.addformwrap {
   background: var(--clr-primary-earthBrown);
   max-width: 480px;
   border-radius: 20px;
+  margin: 15% auto;
 }
 
 #add-form h3 {
@@ -621,7 +622,7 @@ form label {
   color: var(--clr-base);
 }
 
-form input[type="text"], form input[type="number"] {
+#frm-add input[type="text"], form input[type="number"] {
   
   border: 2px solid var(--clr-primary-earthBrown-dkn);
   border-radius: 7px;
@@ -630,12 +631,12 @@ form input[type="text"], form input[type="number"] {
   padding-top: 11px;
 }
 
-form input::placeholder {
+#frm-add input::placeholder {
   color: var(--clr-primary-earthBrown-dkn);
 }
 
 
-form input:focus {
+#frm-add input:focus {
   outline: none;
   border-color: var(--clr-primary-appleRed);
 }
@@ -702,4 +703,61 @@ input[type="checkbox"]:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+
+#frm-add button,  #frm-add .form-submit #reset-form:hover {
+  background: var(--clr-primary-appleRed);
+  border: 1px solid var(--clr-primary-appleRed);
+  border-radius: 10px;
+  color: var(--clr-neutrals-white);
+  text-transform: uppercase;
+  padding: 18px 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+#frm-add .form-submit {
+  gap: 10px;
+  padding-top: var(--pad-20);
+  transition: all ease 0.5s;
+}
+
+
+ #frm-add .form-submit #reset-form, #frm-add button:hover  {
+  background: var(--brdr-white-clr);
+  color: var(--clr-primary-appleRed);
+  transition: all ease 0.5s;
+} 
+
+
+/* ///pop up */
+
+/* The Close Button */
+.close-form {
+  color: var(--clr-neurals-black);
+  float: right;
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.close-form:hover,
+.close-form:focus {
+  color: var(--clr-primary-appleRed);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+section#add-form {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
