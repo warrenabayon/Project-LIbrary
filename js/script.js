@@ -23,9 +23,9 @@ Book.prototype.info = function() {
 }
 
 //add dummy content
-const newBoook1 = new Book('1 Warren Book Part III', 'Warren P. Abayon', 1250, 'Yes');
-const newBoook2 = new Book('2 Warren Book Part III', 'Warren P. Abayon', 12500, 'Yes');
-const newBoook3 = new Book('3 Warren Book Part III', 'Warren P. Abayon', 150, 'Yes');
+const newBoook1 = new Book('1 Warren Book Part III', 'Warren P. Abayon', 1250, 'Continue');
+const newBoook2 = new Book('2 Warren Book Part III', 'Warren P. Abayon', 12500, 'Read Now');
+
 
 
 
@@ -79,7 +79,7 @@ function showBooks(bookArr) {
     bookRow.classList.add("row", "dflex", 'align-fl-cen', 'just-con-sp-bet');
     bookRowColLeft.classList.add('col');
     bookRowColRight.classList.add('col');
-    bookBtnStatus.setAttribute('id', 'isread');
+    bookBtnStatus.classList.add('isread');
     bookBtnStatus.classList.add('regularbtn', 'small');
   
     //add the elemenent //show
@@ -94,6 +94,16 @@ function showBooks(bookArr) {
     bookRow.appendChild(bookRowColRight);
     bookRowColRight.appendChild(bookPagesNo)
     
+    //change status of read to continue
+    console.log(bookBtnStatus.getAttribute('class'));
+    bookBtnStatus.addEventListener('click',(e) => {
+      if(bookBtnStatus.textContent.includes('Read')) {
+        bookBtnStatus.textContent = 'Continue';
+      } else {
+        bookBtnStatus.textContent = 'Read Now';
+      }
+    })
+
   }); 
 
 
