@@ -157,14 +157,19 @@ function addBookToLibrary() {
                           bookTitle.value,
                           bookAuthor.value,
                           bookNoPages.value,
-                          isRead.value
+                          isBookRead(),
                           );
 
-  //check if fields are empty
-  if (!bookTitle.value) {
-    console.log('EMPTY');
-    return;
+  //convert book read status
+  function isBookRead() {
+    if(isRead.checked === true) {
+      return 'Continue';
+    } else {
+      return 'Read Now';
+    }
   }
+  
+
 
   myLibrary.push(newBook);
   showBooks(myLibrary);
