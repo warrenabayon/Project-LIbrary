@@ -8,6 +8,7 @@ const buttonAddBook = document.querySelector('button#addbook');
 const addFormSec = document.querySelector('#add-form');
 const buttonFormClose = document.querySelector('.close-form');
 const buttonConfirmBook = document.querySelector('#confirm-book');
+const formAddBook = document.getElementById('frm-add');
 
 
 function Book(title, author, pagesNo, isRead) {
@@ -27,17 +28,25 @@ const newBoook2 = new Book('2 Warren Book Part III', 'Warren P. Abayon', 12500, 
 const newBoook3 = new Book('3 Warren Book Part III', 'Warren P. Abayon', 150, 'Yes');
 
 
+
+
 //object constructor new object ot array
 myLibrary.push(newBoook1);
 myLibrary.push(newBoook2);
-myLibrary.push(newBoook3);
 
 
+//show books array in the cards
 showBooks(myLibrary);
+showFeatBook(myLibrary);
+
 
 
 //loops array to display the books
 function showBooks(bookArr) {
+  
+  if(bookList.innerHTML) {//clear
+    bookList.innerHTML="";
+  }
 
   bookArr.forEach((val,index, arr) => {
     //create the elements
@@ -63,7 +72,7 @@ function showBooks(bookArr) {
     bookPagesNo.innerHTML = `${val.pagesNo} Pages`;
   
     //add classes
-    bookItems.setAttribute('id','bookitem');
+    bookItems.classList.add('bookitem');
     bookCover.classList.add('bookcover')
     bookDetails.classList.add('bookdetails');
     bookTitle.classList.add('title');
@@ -88,23 +97,27 @@ function showBooks(bookArr) {
   }); 
 
 
+}
 
-
-    /// show Featured Book
-  bookArr.filter((val,index,arr) => {
-    if(index === 0) {
-      featInfoAuthor.innerHTML = val.author;
-      featInfoTitle.innerHTML = `<a href=""> ${val.title} </a>`;
-      featInfoBtnStatus.innerHTML = val.isRead;
-
-    }
-  })
+//show featured book
+function showFeatBook(bookArr) {
+      /// show Featured Book
+      bookArr.filter((val,index,arr) => {
+        if(index === 0) {
+          featInfoAuthor.innerHTML = val.author;
+          featInfoTitle.innerHTML = `<a href=""> ${val.title} </a>`;
+          featInfoBtnStatus.innerHTML = val.isRead;
+    
+        }
+      });
 }
 
 
 //form pop up acctions
 buttonAddBook.addEventListener('click', () => {
   addFormSec.style.display = "block";
+  const bookTitle = document.getElementById('book-title');//focus the title input on load
+  bookTitle.focus();
 });
 
 buttonFormClose.addEventListener('click', () => {
@@ -118,10 +131,45 @@ window.onclick = function(event) {
   }
 }
 
-buttonConfirmBook.addEventListener('click', (e) => {
-  e.preventDefault()//prevent the submit of fake form;
-  console.log('book added');
-})
+// buttonConfirmBook.addEventListener('click', (e) => {
+//   e.preventDefault()//prevent the submit of fake form;
+//   console.log('book added');
+// })
 
-// console.table(myLibrary);
+formAddBook.addEventListener('submit', (e) => {
+  e.preventDefault()//prevent the submit of fake form;
+ 
+  addBookToLibrary();
+
+});
+
+
+
+
+function addBookToLibrary() {
+  const bookTitle = document.getElementById('book-title');
+  const bookAuthor = document.getElementById('book-author');
+  const bookNoPages = document.getElementById('book-pages-no');
+  const isRead = document.getElementById('is-read');
+
+
+  const newBook = new Book(
+                          bookTitle.value,
+                          bookAuthor.value,
+                          bookNoPages.value,
+                          isRead.value
+                          );
+
+  //check if fields are empty
+  if (!bookTitle.value) {
+    console.log('EMPTY');
+    return;
+  }
+
+  myLibrary.push(newBook);
+  showBooks(myLibrary);
+
+  formAddBook.reset();//resets the form fields
+ 
+}
 

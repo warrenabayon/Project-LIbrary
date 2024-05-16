@@ -437,7 +437,7 @@ li.profile {
     gap: 20px;
 }
 
-#bookitem {
+.bookitem {
   box-shadow: var(--box-shade-lt);
   border-radius: 10px;
    
@@ -592,7 +592,7 @@ img#topimg {
   background: var(--clr-primary-earthBrown);
   max-width: 480px;
   border-radius: 20px;
-  margin: 15% auto;
+  margin: 5% auto;
 }
 
 #add-form h3 {
