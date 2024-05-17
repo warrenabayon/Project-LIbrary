@@ -443,12 +443,22 @@ li.profile {
    
 }
 
+p.bookpagesno {
+  margin: var(--mar-5);
+  background: var(--clr-base);
+  color: var(--clr-neutrals-white);
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .bookcover {
     height: 200px;
-    display: block;
     background: var(--clr-primary-earthBrown-dkn);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .bookdetails h3, .bookdetails h4 {
@@ -506,6 +516,22 @@ li.profile {
 
 .regularbtn.small span.btnicon {
     display: none;
+}
+
+
+button.bookDelete {
+  background: transparent;
+  border: none;
+  padding: 3px;
+  cursor: pointer;
+  transition: transform 1s;
+
+}
+
+button.bookDelete:hover svg path {
+  stroke: var(--clr-primary-appleRed);
+ 
+  transform: scale(1.1);
 }
 
 
