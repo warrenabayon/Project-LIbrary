@@ -380,10 +380,12 @@ li.profile {
   align-items: center;
   gap: 10px;
   transition: all ease 0.5s;
+  cursor: pointer;
 }
 
 .regularbtn:hover {
   background: var(--clr-neutrals-white);
+  color: var(--clr-primary-appleRed);
 }
 .regularbtn:hover span, .regularbtn:hover span svg path {
  color: var(--clr-primary-appleRed);
