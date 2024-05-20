@@ -1,6 +1,7 @@
 const myLibrary = [];
 const bookList = document.querySelector('#book-list');
 const bookFeat = document.querySelector('#book-feat');
+const featInfo = document.querySelector('.featinfo');
 const featInfoAuthor = document.querySelector('.featinfo h4');
 const featInfoTitle = document.querySelector('.featinfo h3');
 const featInfoBtnStatus = document.querySelector('.featinfo button');
@@ -41,15 +42,47 @@ showFeatBook(myLibrary);
 
 
 
-//loops array to display the books
-function showBooks(bookArr) {
+
+function showFeatBook() { //show featured book
+      myLibrary.filter((val,index,arr) => {
+        if(index === 0) {
+          featInfoAuthor.innerHTML = val.author;
+          featInfoTitle.innerHTML = `<a href=""> ${val.title} </a>`;
+          featInfoBtnStatus.innerHTML = val.isRead;
+
+        }
+      });
+      
+      if (myLibrary.length === 0) {///hide if empty
+        bookFeat.style.display = 'none';
+      } else {
+        bookFeat.style.display = 'flex';
+      }
+  
+};
+
+
+function changeButtonReadStatus() {
+
+  if(myLibrary[0].isRead.includes('Read')) {//check the value if book read status
+    myLibrary[0].isRead = 'Continue';
+  } else {
+    myLibrary[0].isRead = 'Read Now';
+  }
+  //reload
+  showBooks(myLibrary);
+  showFeatBook(myLibrary);
+}
+
+featInfoBtnStatus.addEventListener('click', changeButtonReadStatus);
+
+function showBooks(bookArr) {//loops array to display the books
   
   if(bookList.innerHTML) {//clear
     bookList.innerHTML="";
   }
-
-  bookArr.forEach((val,index, arr) => {
-    //create the elements
+  bookArr.forEach((val,index, arr) => { //create the elements
+   
     const bookItems = document.createElement('article');
     const bookCover = document.createElement('div');
     const bookBtnDelete = document.createElement('button');
@@ -101,37 +134,41 @@ function showBooks(bookArr) {
     bookRow.appendChild(bookRowColRight);
     bookCover.appendChild(bookPagesNo)
     bookRowColRight.appendChild(bookBtnDelete);
-    
-    //change status of read to continue
-    // console.log(bookBtnStatus.getAttribute('class'));
-    bookBtnStatus.addEventListener('click',(e) => {
+
+
+
+    function changeReadStatus() {
       if(val.isRead.includes('Read')) {//check the value if book read status
         val.isRead = 'Continue';
       } else {
         val.isRead = 'Read Now';
       }
       //reload
-      showBooks(bookArr);
-      
-    })
+      showBooks(myLibrary);
+      showFeatBook(myLibrary);
+    }
+
+    //delete book item
+    function deleteBookItem() {
+      if(confirm(`Delete ${val.title}`) === true) {//confirmation of deletion
+        myLibrary.splice(index,1);//delete
+      } 
+
+      showBooks(myLibrary);
+      showFeatBook(myLibrary);
+    }
+
+    
+    //change status of read to continue
+    bookBtnStatus.addEventListener('click',changeReadStatus);
+    //delete book item
+    bookBtnDelete.addEventListener('click', deleteBookItem);
 
   }); 
 
 
-}
+};//end show
 
-//show featured book
-function showFeatBook(bookArr) {
-      /// show Featured Book
-      bookArr.filter((val,index,arr) => {
-        if(index === 0) {
-          featInfoAuthor.innerHTML = val.author;
-          featInfoTitle.innerHTML = `<a href=""> ${val.title} </a>`;
-          featInfoBtnStatus.innerHTML = val.isRead;
-    
-        }
-      });
-}
 
 
 //form pop up acctions
@@ -194,7 +231,8 @@ function addBookToLibrary() {
 
   myLibrary.push(newBook);
   showBooks(myLibrary);
-
+  showFeatBook(myLibrary);
+  
   formAddBook.reset();//resets the form fields
  
 }
